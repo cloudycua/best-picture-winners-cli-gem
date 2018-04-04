@@ -21,17 +21,19 @@ class BestPictureWinners::ScraperURL
     while index < pages do
       get_url_pages[index].css(".article_movie_title").each do |movie|
         movie_title = movie.css("h2 a").text
+        movie_year = movie.css(".start-year").text.slice!(1,4)
         movie_url = movie.css("h2 a").attr("href").value
-        movies << {title: movie_title, url: movie_url}
+        movies << {title: movie_title, year: movie_year, url: movie_url}
       end
       index += 1
     end
     movies
   end
 
-#  def make_movies
-#    get
-#  end
-
+  def make_movies
+    scrape_movie_urls.each do |movie|
+      BestPictureWinners::Movie.new(movie)
+    end
+  end
 
 end
