@@ -14,32 +14,20 @@ class BestPictureWinners::ScraperURL
     all_url_pages
   end
 
-  def scrape_movie_titles
-    movie_titles = []
-    pages = get_url_pages.size
-    index = 0
-    while index < pages do
-      get_url_pages[index].css(".article_movie_title").each do |movie|
-        movie_titles << movie.css("h2 a").text
-      end
-      index += 1
-    end
-    movie_titles
-  end
-
   def scrape_movie_urls
-    movie_urls = []
+    movies = []
     pages = get_url_pages.size
     index = 0
     while index < pages do
       get_url_pages[index].css(".article_movie_title").each do |movie|
-        movie_urls << movie.css.("h2 a").attr("href").value
+        movie_title = movie.css("h2 a").text
+        movie_url = movie.css("h2 a").attr("href").value
+        movies << {title: movie_title, url: movie_url}
       end
       index += 1
     end
-    movie_urls
+    movies
   end
-
 
 #  def make_movies
 #    get
