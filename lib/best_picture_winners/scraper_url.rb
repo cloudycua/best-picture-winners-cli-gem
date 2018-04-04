@@ -1,27 +1,39 @@
 class BestPictureWinners::ScraperURL
-#  attr_accessor :all_pages
 
-  def get_url_page
-  # https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/
-    doc9 = Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/9/"))
-    doc9
-#    doc8 = Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/8/"))
-#    doc7 = Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/7/"))
-#    doc6 = Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/6/"))
-#    doc5 = Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/5/"))
-#    doc4 = Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/4/"))
-#    doc3 = Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/3/"))
-#    doc2 = Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/2/"))
-#    doc1 = Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/"))
+  def get_url_pages
+    all_url_pages = []
+    all_url_pages << Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/9/"))
+
+#    @all_url_pages << Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/8/"))
+#    @all_url_pages << Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/7/"))
+#    @all_url_pages << Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/6/"))
+#    @all_url_pages << Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/5/"))
+#    @all_url_pages << Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/4/"))
+#    @all_url_pages << Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/3/"))
+#    @all_url_pages << Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/2/"))
+#    @all_url_pages << Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/"))
+    all_url_pages
   end
 
-#  def get_movie_urls
-#    puts doc9
-#    # @all_pages << doc9.css(".article_movie_title a h2".attr('href'))
-#  end
+  def scrape_movie_titles
+    movie_title = get_url_pages[0].css(".article_movie_title h2 a").text
+    movie_title
 
-#  def make_movies
-#
-#  end
+    # h2".attr('href'))
+    #movie_url
+  end
+
+  def scrape_movie_urls
+    movie_url = get_url_pages[0].css(".article_movie_title a h2").text
+    movie_url
+
+    # h2".attr('href'))
+    #movie_url
+  end
+
+  def make_movies
+    get
+  end
+
 
 end
