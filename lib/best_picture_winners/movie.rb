@@ -14,4 +14,8 @@ class BestPictureWinners::Movie
     @@all
   end
 
+  def self.print
+
+  end
+
 end

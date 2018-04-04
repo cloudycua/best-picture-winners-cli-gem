@@ -3,7 +3,7 @@ class BestPictureWinners::CLI
   def call
     # Scrape Best Picture individual movie URL's and create a movie object for each
     BestPictureWinners::ScraperURL.new.make_movies
-    BestPictureWinners::ScraperInfo.new.get_movie_page_from_url
+    BestPictureWinners::ScraperInfo.new.add_movie_info_from_url
     start
   end
 

@@ -1,6 +1,6 @@
 class BestPictureWinners::ScraperInfo
 
-  def get_movie_page_from_url
+  def add_movie_info_from_url
     index = 0
     num_movies = BestPictureWinners::Movie.all.size
     while index < num_movies do
