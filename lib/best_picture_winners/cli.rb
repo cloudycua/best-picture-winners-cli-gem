@@ -1,13 +1,11 @@
 class BestPictureWinners::CLI
 
-  puts "Hello World"
-
   def call
     start
   end
 
   def start
-    # Welcome
+    puts "Welcome!"
     # How would you like the Best Picture winners to be sorted?
     # 1: alphabetically
     #    All movies or movies that start with a particular letter
