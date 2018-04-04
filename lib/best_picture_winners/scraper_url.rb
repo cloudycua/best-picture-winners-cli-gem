@@ -1,6 +1,6 @@
 class BestPictureWinners::Scraper
 
-  def get_page_rotten_tomatoes
+  def get_rotten_tomatoes_pages
   # https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/
   # https://blog.roku.com/best-picture-oscar-winners-ranked-rotten-tomatoes
     doc9 = Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/9/"))
