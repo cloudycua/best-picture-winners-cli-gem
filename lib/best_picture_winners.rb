@@ -4,6 +4,8 @@ require 'nokogiri'
 
 require_relative "best_picture_winners/movie"
 require_relative "best_picture_winners/cli"
+require_relative "best_picture_winners/scraper_url"
+require_relative "best_picture_winners/scraper_movie"
 require_relative "best_picture_winners/version"
 
 module BestPictureWinners

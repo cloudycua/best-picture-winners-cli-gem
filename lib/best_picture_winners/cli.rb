@@ -1,4 +1,6 @@
-class BestPictureWinners::cli
+class BestPictureWinners::CLI
+
+  puts "Hello World"
 
   def call
     start
