@@ -1,5 +1,5 @@
 class BestPictureWinners::Movie
-  attr_accessor :title, :year, :url, :tomatometer, :audience_score, :genre, :runtime, :synopsis, :critic_consensus
+  attr_accessor :title, :year, :url, :tomatometer, :audience_score, :synopsis, :critic_consensus
 
   @@all = []
 
