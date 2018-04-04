@@ -1,9 +1,10 @@
 class BestPictureWinners::ScraperURL
 #  attr_accessor :all_pages
 
-#  def get_rotten_tomatoes_movie_pages_for_urls
+  def get_url_page
   # https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/
-#    doc9 = Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/9/"))
+    doc9 = Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/9/"))
+    doc9
 #    doc8 = Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/8/"))
 #    doc7 = Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/7/"))
 #    doc6 = Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/6/"))
@@ -12,7 +13,7 @@ class BestPictureWinners::ScraperURL
 #    doc3 = Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/3/"))
 #    doc2 = Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/2/"))
 #    doc1 = Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/"))
-#  end
+  end
 
 #  def get_movie_urls
 #    puts doc9

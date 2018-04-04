@@ -6,6 +6,7 @@ class BestPictureWinners::CLI
 
   def start
     puts "Welcome!"
+    puts BestPictureWinners::ScraperURL.new.get_url_page
     # How would you like the Best Picture winners to be sorted?
     # 1: alphabetically
     #    All movies or movies that start with a particular letter
