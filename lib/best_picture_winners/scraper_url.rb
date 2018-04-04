@@ -16,11 +16,15 @@ class BestPictureWinners::ScraperURL
 
   def scrape_movie_titles
     movie_titles = []
-    count = get_url_pages.size
-    get_url_pages[0].css(".article_movie_title").each do |movie|
-      movie_titles << movie.css("h2 a").text
+    pages = get_url_pages.size
+    index = 0
+    while index < pages do
+      get_url_pages[index].css(".article_movie_title").each do |movie|
+        movie_titles << movie.css("h2 a").text
+      end
+      index += 1
     end
-    count
+    movie_titles
   end
 
 #  def scrape_movie_urls
