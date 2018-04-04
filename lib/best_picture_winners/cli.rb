@@ -2,13 +2,16 @@ class BestPictureWinners::CLI
 
   def call
     # Scrape Best Picture individual movie URL's and create a movie object for each
-    BestPictureWinners::ScraperURL.new.make_movies
+#    BestPictureWinners::ScraperURL.new.make_movies
     start
   end
 
   def start
-    puts "Welcome!"
-    puts BestPictureWinners::Movie.all[0].title
+#    puts "Welcome!"
+    puts BestPictureWinners::ScraperURL.new.get_url_pages
+#    puts BestPictureWinners::Movie.all[0].title
+#    puts BestPictureWinners::Movie.all[0].url
+#    puts BestPictureWinners::ScraperInfo.new.get_movie_page_from_url
     # How would you like the Best Picture winners to be sorted?
     # 1: alphabetically
     #    All movies or movies that start with a particular letter
