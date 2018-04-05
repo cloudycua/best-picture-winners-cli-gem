@@ -50,6 +50,7 @@ class BestPictureWinners::CLI
     else
       puts " "
       puts "Goodbye!"
+      puts " "
     end
   end
 
