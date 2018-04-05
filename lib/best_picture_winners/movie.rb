@@ -3,11 +3,12 @@ class BestPictureWinners::Movie
 
   @@all = []
 
-  def initialize(movie_hash)
-    movie_hash.each do |attribute, value|
-      self.send("#{attribute}=", value)
+  def initialize
+#  def initialize(movie_hash)
+#    movie_hash.each do |attribute, value|
+#      self.send("#{attribute}=", value)
       @@all << self
-    end
+#    end
   end
 
   def self.all

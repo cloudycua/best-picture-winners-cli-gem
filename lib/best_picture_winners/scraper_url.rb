@@ -1,5 +1,4 @@
 class BestPictureWinners::ScraperURL
-  attr_accessor :pages
 
   def get_url_pages
     all_url_pages = []
@@ -17,7 +16,7 @@ class BestPictureWinners::ScraperURL
 
   def scrape_movie_urls
     movies = []
-    @pages = get_url_pages.size
+    pages = get_url_pages.size
     index = 0
     while index < pages do
       get_url_pages[index].css(".article_movie_title").each do |movie|
@@ -32,6 +31,7 @@ class BestPictureWinners::ScraperURL
   end
 
   def make_movies
+    pages = get_url_pages.size
     index = 0
     while index < pages do
       scrape_movie_urls.each do |movie|
@@ -39,8 +39,8 @@ class BestPictureWinners::ScraperURL
         BestPictureWinners::Movie.all[index].title = movie[:title]
         BestPictureWinners::Movie.all[index].year = movie[:year]
         BestPictureWinners::Movie.all[index].url = movie[:url]
-        binding.pry
       end
+      index += 1
     end
   end
 

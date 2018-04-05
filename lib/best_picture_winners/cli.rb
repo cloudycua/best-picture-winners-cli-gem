@@ -11,9 +11,9 @@ class BestPictureWinners::CLI
   end
 
   def start
-    BestPictureWinners::Movie.all.each do |movie|
-      puts movie.title
-    end
+#    BestPictureWinners::Movie.all.each do |movie|
+#      puts movie.title
+#    end
     puts "The Oscar winners' list can be shown any of the following ways:"
     puts "1 - Alphabetically"
     puts "2 - By year"
