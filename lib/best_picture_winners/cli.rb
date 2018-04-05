@@ -21,7 +21,8 @@ class BestPictureWinners::CLI
     puts "4 - By Rotten Tomatoes' Audience Score (AS)"
     puts " "
     puts "Please enter a number:"
-    case valid_number_entry
+    valid_entries = [1,2,3,4]
+    case valid_number_entry(valid_entries)
     when 1
       BestPictureWinners::Movie.print_alphabetically
     when 2
@@ -32,6 +33,26 @@ class BestPictureWinners::CLI
       BestPictureWinners::Movie.print_by_audience
     end
     play_again
+    ask_for_a_movie
+  end
+
+  def ask_for_a_movie
+    puts " "
+    "Please enter the year or title of a movie if you would like more details:"
+    entry = gets.chomp
+    last_year = BestPictureWinners::Movie.all.sort_by! { |movie| movie.year }.max
+    valid_entries = (1..last_year).to_a
+    entry = valid_number_entry(valid_entries)
+    if entry.to_i == 0
+      #lookup movie
+      BestPictureWinners::Movie.all.each do |movie|
+        if movie.title == entry
+          print_movie_details
+        end
+      end
+    else
+      entry = entry.to_i
+
   end
 
   def play_again
@@ -54,8 +75,7 @@ class BestPictureWinners::CLI
     end
   end
 
-  def valid_number_entry
-    valid_entries = [1,2,3,4]
+  def valid_number_entry(valid_entries)
     entry = gets.chomp.to_i
     if valid_entries.include?(entry)
       entry
@@ -69,3 +89,4 @@ class BestPictureWinners::CLI
   end
 
 end
+
