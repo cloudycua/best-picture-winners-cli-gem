@@ -1,8 +1,10 @@
 class BestPictureWinners::CLI
 
   def call
+    puts " "
     puts "Welcome to the Academy Award Best Picture Winner database!"
-    puts "Please wait while we upload the database."
+    puts "Please wait while we upload the database. This might take a few minutes."
+    puts " "
     # Scrape Best Picture individual movie URL's and create a movie object for each with title, year and url
     BestPictureWinners::ScraperURL.new.make_movies
     # Scrape movie data from individual movie pages using URL from the ScraperURL
@@ -12,10 +14,12 @@ class BestPictureWinners::CLI
 
   def start
     puts "The Oscar winners' list can be shown any of the following ways:"
+    puts " "
     puts "1 - Alphabetically"
     puts "2 - By year"
     puts "3 - By Rotten Tomatoes' Critics Tomatometer (RT)"
     puts "4 - By Rotten Tomatoes' Audience Score (AS)"
+    puts " "
     puts "Please enter a number:"
     case valid_number_entry
     when 1
