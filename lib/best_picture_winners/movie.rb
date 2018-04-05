@@ -26,12 +26,7 @@ class BestPictureWinners::Movie
   def self.print_alphabetically
     sorted_array = []
     sorted_array = self.all.sort_by! { |movie| movie.title }
-    sorted_array.each do |movie|
-      puts "#{movie.title} (#{movie.year})"
-#      puts "Synopsis: #{movie.synopsis}"
-#      puts "Critics Consensus: #{movie.critic_consensus}"
-      puts "Rotten Tomatoes Rating: #{movie.tomatometer}   Audience Score: #{movie.audience_score}"
-    end
+    print(sorted_array)
   end
 
   def self.print_by_year
