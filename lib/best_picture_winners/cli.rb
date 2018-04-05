@@ -31,6 +31,26 @@ class BestPictureWinners::CLI
     else
       BestPictureWinners::Movie.print_by_audience
     end
+    play_again
+  end
+
+  def play_again
+    puts " "
+    puts "Would you like to see another list?"
+    entry = gets.chomp.downcase
+    if !["y","n"].include?(entry)
+      until ["y","n"].include?(entry) do
+        puts "Invalid entry. Please enter Y or N to see another list."
+        entry = gets.chomp.downcase
+      end
+    end
+    if entry == "y"
+      puts " "
+      start
+    else
+      puts " "
+      puts "Goodbye!"
+    end
   end
 
   def valid_number_entry
