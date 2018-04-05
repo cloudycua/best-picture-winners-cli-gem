@@ -40,32 +40,33 @@ class BestPictureWinners::CLI
     puts " "
     puts "Please enter the year or title of a movie if you would like more details:"
     entry = gets.chomp
+    if entry.to_i == 0
+      #lookup movie
+      BestPictureWinners::Movie.all.each do |movie|
+        if movie.title == entry
+          puts "looked up movie by #{entry}"
+#          print_movie_details
+        end
+      end
+    elsif (1..last_year).to_a.include?(entry.to_i)
+      entry = entry.to_i
+      BestPictureWinners::Movie.all.each do |movie|
+        if movie.year == entry
+          puts "looked up movie by #{entry}"
+#          print_movie_details
+        end
+      end
+    end
+  end
+
+  def last_year
     year_array = []
     BestPictureWinners::Movie.all.each do |movie|
       year_array << movie.year
     end
-    last_year = year_array.max
-    binding.pry
-#    valid_entries = (1..last_year).to_a
-#    entry = valid_number_entry(valid_entries)
-#    if entry.to_i == 0
-#      #lookup movie
-#      BestPictureWinners::Movie.all.each do |movie|
-#        if movie.title == entry
-#          puts "looked up movie by #{entry}"
-#          print_movie_details
-#        end
-#      end
-#    else
-#      entry = entry.to_i
-#      BestPictureWinners::Movie.all.each do |movie|
-#        if movie.year == entry
-#          puts "looked up movie by #{entry}"
-#          print_movie_details
-#        end
-#      end
-#    end
+    year_array.max.to_i
   end
+
 
   def play_again
     puts " "
