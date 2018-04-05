@@ -11,34 +11,35 @@ class BestPictureWinners::CLI
   end
 
   def start
+    BestPictureWinners::Movie.all.each do |movie|
+      puts movie.title
+    end
     puts "The Oscar winners' list can be shown any of the following ways:"
     puts "1 - Alphabetically"
-    puts "2 - Starting with the letter: "
-    puts "3 - By year"
-    puts "4 - By Rotten Tomatoes' Critics Tomatometer"
-    puts "5 - By Rotten Tomatoes' Audience Score"
-    valid_entry([1,2,3,4,5])
-    case valid_entry
+    puts "2 - By year"
+    puts "3 - By Rotten Tomatoes' Critics Tomatometer"
+    puts "4 - By Rotten Tomatoes' Audience Score"
+    puts "Please enter a number:"
+    case valid_number_entry
     when 1
       BestPictureWinners::Movie.print_alphabetically
     when 2
-      BestPictureWinners::Movie.print_by_letter
-    when 3
       BestPictureWinners::Movie.print_by_year
-    when 4
+    when 3
       BestPictureWinners::Movie.print_by_tomatometer
     else
       BestPictureWinners::Movie.print_by_audience
     end
   end
 
-  def valid_entry(range)
+  def valid_number_entry
+    valid_entries = [1,2,3,4]
     entry = gets.chomp.to_i
-    if range.include?(entry)
+    if valid_entries.include?(entry)
       entry
     else
-      until range.include?(entry) do
-        puts "Invalid entry. Please select enter a number from #{range.min} to #{range.max}."
+      until valid_entries.include?(entry) do
+        puts "Invalid entry. Please select enter a number from '#{valid_entries.min}' to '#{valid_entries.max}'."
         entry = gets.chomp.to_i
       end
       entry

@@ -14,27 +14,42 @@ class BestPictureWinners::Movie
     @@all
   end
 
-  def self.print(array)
-
+  def self.print(movies)
+    movies.each do |movie|
+      puts "#{movie.title} (#{movie.year})"
+#      puts "Synopsis: #{movie.synopsis}"
+#      puts "Critics Consensus: #{movie.critic_consensus}"
+      puts "Rotten Tomatoes Rating: #{movie.tomatometer}   Audience Score: #{movie.audience_score}"
+    end
   end
 
   def self.print_alphabetically
     sorted_array = []
-    self.all.sort_by! { |movie| movie[:title] }
-
-
-  end
-
-  def self.print_by_letter
+    sorted_array = self.all.sort_by! { |movie| movie.title }
+    sorted_array.each do |movie|
+      puts "#{movie.title} (#{movie.year})"
+#      puts "Synopsis: #{movie.synopsis}"
+#      puts "Critics Consensus: #{movie.critic_consensus}"
+      puts "Rotten Tomatoes Rating: #{movie.tomatometer}   Audience Score: #{movie.audience_score}"
+    end
   end
 
   def self.print_by_year
+    sorted_array = []
+    sorted_array = self.all.sort_by! { |movie| movie.year }.reverse!
+    print(sorted_array)
   end
 
   def self.print_by_tomatometer
+    sorted_array = []
+    sorted_array = self.all.sort_by! { |movie| movie.tomatometer }.reverse!
+    print(sorted_array)
   end
 
   def self.print_by_audience
+    sorted_array = []
+    sorted_array = self.all.sort_by! { |movie| movie.audience_score }.reverse!
+    print(sorted_array)
   end
 
 end
