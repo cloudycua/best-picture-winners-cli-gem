@@ -1,6 +1,6 @@
 # BestPictureWinners
 
-This Ruby Gem provides a CLI to view the Best Picture Academy Award winners with details from the Rotten Tomatoes website.
+This Ruby Gem provides a CLI to view and sort the Best Picture Academy Award winners. Details are provided from the Rotten Tomatoes website.
 
 ## Installation
 
