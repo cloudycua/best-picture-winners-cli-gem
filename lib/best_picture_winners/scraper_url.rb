@@ -31,14 +31,8 @@ class BestPictureWinners::ScraperURL
   end
 
   def make_movies
-    scrape_movie_urls
-    pages = get_url_pages.size
-    index = 0
-    while index < pages do
-      scrape_movie_urls.each do |movie|
-        BestPictureWinners::Movie.new(movie[:title], movie[:year], movie[:url])
-      end
-      index += 1
+    scrape_movie_urls.each do |movie|
+      BestPictureWinners::Movie.new(movie[:title], movie[:year], movie[:url])
     end
   end
 
