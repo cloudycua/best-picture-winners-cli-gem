@@ -3,7 +3,10 @@ class BestPictureWinners::Movie
 
   @@all = []
 
-  def initialize
+  def initialize(title, year, url)
+    @title = title
+    @year = year
+    @url = url
 #  def initialize(movie_hash)
 #    movie_hash.each do |attribute, value|
 #      self.send("#{attribute}=", value)
