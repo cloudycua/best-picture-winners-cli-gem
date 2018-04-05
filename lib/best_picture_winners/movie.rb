@@ -14,8 +14,27 @@ class BestPictureWinners::Movie
     @@all
   end
 
-  def self.print
+  def self.print(array)
 
+  end
+
+  def self.print_alphabetically
+    sorted_array = []
+    self.all.sort_by! { |movie| movie[:title] }
+
+
+  end
+
+  def self.print_by_letter
+  end
+
+  def self.print_by_year
+  end
+
+  def self.print_by_tomatometer
+  end
+
+  def self.print_by_audience
   end
 
 end

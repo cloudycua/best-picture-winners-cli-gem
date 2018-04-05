@@ -24,7 +24,7 @@ class BestPictureWinners::CLI
     when 2
       BestPictureWinners::Movie.print_by_letter
     when 3
-      BestPictureWinners::Movie.print_by _year
+      BestPictureWinners::Movie.print_by_year
     when 4
       BestPictureWinners::Movie.print_by_tomatometer
     else
