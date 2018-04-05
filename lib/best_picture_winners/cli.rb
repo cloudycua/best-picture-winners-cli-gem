@@ -44,15 +44,15 @@ class BestPictureWinners::CLI
       #lookup movie
       BestPictureWinners::Movie.all.each do |movie|
         if movie.title == entry
-          puts "looked up movie by #{entry}"
-#          print_movie_details
+          puts " "
+          print_movie_details
         end
       end
     elsif valid_years.include?(entry)
       BestPictureWinners::Movie.all.each do |movie|
         if movie.year == entry
-          puts "looked up movie by #{entry}"
-#          print_movie_details
+          puts " "
+          print_movie_details
         end
       end
     else
