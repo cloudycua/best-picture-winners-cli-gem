@@ -40,9 +40,12 @@ class BestPictureWinners::CLI
     puts " "
     puts "Please enter the year or title of a movie if you would like more details:"
     entry = gets.chomp
+    year_array = []
+    BestPictureWinners::Movie.all.each do |movie|
+      year_array << movie.year
+    end
+    last_year = year_array.max
     binding.pry
-    last_year = (BestPictureWinners::Movie.all.sort_by! { |movie| movie.year }).max
-
 #    valid_entries = (1..last_year).to_a
 #    entry = valid_number_entry(valid_entries)
 #    if entry.to_i == 0
