@@ -48,23 +48,25 @@ class BestPictureWinners::CLI
 #          print_movie_details
         end
       end
-    elsif (1..last_year).to_a.include?(entry.to_i)
-      entry = entry.to_i
+    elsif valid_years.include?(entry)
       BestPictureWinners::Movie.all.each do |movie|
         if movie.year == entry
           puts "looked up movie by #{entry}"
 #          print_movie_details
         end
       end
+    else
+      puts "There are no Best Picture Winners by that title or year."
+      ask_for_a_movie
     end
   end
 
-  def last_year
+  def valid_years
     year_array = []
     BestPictureWinners::Movie.all.each do |movie|
       year_array << movie.year
     end
-    year_array.max.to_i
+    year_array
   end
 
 
