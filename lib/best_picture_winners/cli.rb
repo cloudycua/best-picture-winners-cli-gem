@@ -14,8 +14,8 @@ class BestPictureWinners::CLI
     puts "The Oscar winners' list can be shown any of the following ways:"
     puts "1 - Alphabetically"
     puts "2 - By year"
-    puts "3 - By Rotten Tomatoes' Critics Tomatometer"
-    puts "4 - By Rotten Tomatoes' Audience Score"
+    puts "3 - By Rotten Tomatoes' Critics Tomatometer (RT)"
+    puts "4 - By Rotten Tomatoes' Audience Score (AS)"
     puts "Please enter a number:"
     case valid_number_entry
     when 1
