@@ -60,4 +60,14 @@ class BestPictureWinners::Movie
     print(sorted_array)
   end
 
+  def self.print_movie_details
+    movies.each do |movie|
+      puts "#{movie.title} (#{movie.year})"
+      puts "Synopsis: #{movie.synopsis}"
+      puts "RT: #{movie.tomatometer}%   AS: #{movie.audience_score}%"
+      puts "Critics Consensus: #{movie.critic_consensus}"
+      puts " "
+    end
+  end
+
 end

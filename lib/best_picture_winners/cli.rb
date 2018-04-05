@@ -45,14 +45,14 @@ class BestPictureWinners::CLI
       BestPictureWinners::Movie.all.each do |movie|
         if movie.title == entry
           puts " "
-          print_movie_details
+          BestPictureWinners::Movie.print_movie_details
         end
       end
     elsif valid_years.include?(entry)
       BestPictureWinners::Movie.all.each do |movie|
         if movie.year == entry
           puts " "
-          print_movie_details
+          BestPictureWinners::Movie.print_movie_details
         end
       end
     else
