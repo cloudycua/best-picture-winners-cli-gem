@@ -20,15 +20,20 @@ class BestPictureWinners::ScraperInfo
     num_movies = BestPictureWinners::Movie.all.size
     while index < num_movies do
       movie_page = Nokogiri::HTML(open(BestPictureWinners::Movie.all[index].url))
-      movie_page.css(".panel-rt .content-meta").each do |attribute|
-        attributes << attribute.css("li .meta-label").text
-        values << attribute.css("li .meta-value").text.delete!("\n")
+      movie_page.css(".panel-rt .content-meta").each do |movie|
+        movie.css("li").each do |attribute|
+          if attribute.css(".meta-label").text.strip == "Rating:"
+            if attribute.css(".meta-value").text.delete!("\n") != nil
+              BestPictureWinners::Movie.rating = attribute.css(".meta-value").text.delete!("\n").strip
+            else
+              BestPictureWinners::Movie.rating = ""
+            end
+          end
+        end
       end
       index += 1
     end
-    binding.pry
     puts attributes
-    puts values
   end
 
 end
