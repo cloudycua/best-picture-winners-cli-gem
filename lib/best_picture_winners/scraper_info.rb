@@ -13,4 +13,22 @@ class BestPictureWinners::ScraperInfo
     end
   end
 
+  def add_movie_info_from_url
+    attributes = []
+    values = []
+    index = 0
+    num_movies = BestPictureWinners::Movie.all.size
+    while index < num_movies do
+      movie_page = Nokogiri::HTML(open(BestPictureWinners::Movie.all[index].url))
+      movie_page.css(".panel-rt .content-meta").each do |attribute|
+        attributes << attribute.css("li .meta-label").text
+        values << attribute.css("li .meta-value").text.delete!("\n")
+      end
+      index += 1
+    end
+    binding.pry
+    puts attributes
+    puts values
+  end
+
 end
