@@ -59,13 +59,15 @@ class BestPictureWinners::Movie
   end
 
   def self.print_movie_details(movie)
-    puts "#{movie.title} (#{movie.year})  RT: #{movie.tomatometer}%  AS: #{movie.audience_score}%"
+    puts "#{movie.title.upcase} (#{movie.year})"
     puts " "
-    puts "Rating: #{movie.rating}    Runtime: #{movie.runtime}    Genre: #{movie.genre}"
+    puts "Genre: #{movie.genre}   Rating: #{movie.rating}   Runtime: #{movie.runtime}"
     puts " "
     puts "Synopsis: #{movie.synopsis}"
     puts " "
     puts "Critics Consensus: #{movie.critic_consensus}"
+    puts " "
+    puts "Tomatometer: #{movie.tomatometer}%   Audience Score: #{movie.audience_score}%"
     puts " "
   end
 
