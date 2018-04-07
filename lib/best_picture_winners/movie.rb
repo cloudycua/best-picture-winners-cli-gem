@@ -17,8 +17,6 @@ class BestPictureWinners::Movie
   def self.print(movies)
     movies.each do |movie|
       puts "#{movie.title} (#{movie.year})"
-#      puts "Synopsis: #{movie.synopsis}"
-#      puts "Critics Consensus: #{movie.critic_consensus}"
       puts "RT: #{movie.tomatometer}%   AS: #{movie.audience_score}%"
       puts " "
     end
@@ -62,6 +60,8 @@ class BestPictureWinners::Movie
 
   def self.print_movie_details(movie)
     puts "#{movie.title} (#{movie.year})  RT: #{movie.tomatometer}%  AS: #{movie.audience_score}%"
+    puts " "
+    puts "Rating: #{movie.rating}    Runtime: #{movie.runtime}    Genre: #{movie.genre}"
     puts " "
     puts "Synopsis: #{movie.synopsis}"
     puts " "

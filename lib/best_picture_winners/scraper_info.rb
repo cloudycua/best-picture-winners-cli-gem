@@ -24,16 +24,24 @@ class BestPictureWinners::ScraperInfo
         movie.css("li").each do |attribute|
           if attribute.css(".meta-label").text.strip == "Rating:"
             if attribute.css(".meta-value").text.delete!("\n") != nil
-              BestPictureWinners::Movie.rating = attribute.css(".meta-value").text.delete!("\n").strip
-            else
-              BestPictureWinners::Movie.rating = ""
+              BestPictureWinners::Movie.all[index].rating = attribute.css(".meta-value").text.delete!("\n").strip
+            end
+          end
+          if attribute.css(".meta-label").text.strip == "Genre:"
+            if attribute.css(".meta-value").text.delete!("\n") != nil
+              BestPictureWinners::Movie.all[index].genre = attribute.css(".meta-value").text.delete!("\n").delete(" ")
+            end
+          end
+          if attribute.css(".meta-label").text.strip == "Runtime:"
+            if attribute.css(".meta-value").text.delete!("\n") != nil
+              BestPictureWinners::Movie.all[index].runtime = attribute.css(".meta-value").text.delete!("\n").strip
             end
           end
         end
       end
       index += 1
     end
-    puts attributes
+    BestPictureWinners::Movie.print_movie_details(BestPictureWinners::Movie.all[0])
   end
 
 end
