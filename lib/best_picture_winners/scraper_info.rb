@@ -32,7 +32,6 @@ class BestPictureWinners::ScraperInfo
       end
       index += 1
     end
-    BestPictureWinners::Movie.print_movie_details(BestPictureWinners::Movie.all[0])
   end
 
 end

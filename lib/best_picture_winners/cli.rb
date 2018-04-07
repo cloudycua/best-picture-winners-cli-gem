@@ -33,32 +33,38 @@ class BestPictureWinners::CLI
       BestPictureWinners::Movie.print_by_audience
     end
     ask_for_a_movie
-    play_again
   end
 
   def ask_for_a_movie
     puts " "
-    puts "Please enter the year or title of a movie if you would like more details:"
+    puts "Please enter the year or title of a movie if you would like more details, or 'exit' to leave the program:"
     entry = gets.chomp
-    if entry.to_i == 0 && valid_movies.include?(entry.downcase)
-      #lookup movie
-      BestPictureWinners::Movie.all.each do |movie|
-        if movie.title.downcase == entry.downcase
-          puts " "
-          BestPictureWinners::Movie.print_movie_details(movie)
-        end
-      end
-    elsif valid_years.include?(entry)
-      BestPictureWinners::Movie.all.each do |movie|
-        if movie.year == entry
-          puts " "
-          BestPictureWinners::Movie.print_movie_details(movie)
-        end
-      end
-    else
+    if entry.downcase == "exit"
       puts " "
-      puts "There are no Best Picture Winners by that title or year."
-      ask_for_a_movie
+      puts "Thanks for using our Best Picture Winners database. Goodbye!"
+      puts " "
+    else
+      if entry.to_i == 0 && valid_movies.include?(entry.downcase)
+        #lookup movie
+        BestPictureWinners::Movie.all.each do |movie|
+          if movie.title.downcase == entry.downcase
+            puts " "
+            BestPictureWinners::Movie.print_movie_details(movie)
+          end
+        end
+      elsif valid_years.include?(entry)
+        BestPictureWinners::Movie.all.each do |movie|
+          if movie.year == entry
+            puts " "
+            BestPictureWinners::Movie.print_movie_details(movie)
+          end
+        end
+      else
+        puts " "
+        puts "There are no Best Picture Winners by that title or year."
+        ask_for_a_movie
+      end
+      play_again
     end
   end
 
@@ -93,7 +99,7 @@ class BestPictureWinners::CLI
       start
     else
       puts " "
-      puts "Goodbye!"
+      puts "Thanks for using our Best Picture Winners database. Goodbye!"
       puts " "
     end
   end
