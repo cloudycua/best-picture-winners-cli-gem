@@ -33,6 +33,7 @@ class BestPictureWinners::CLI
       BestPictureWinners::Movie.print_by_audience
     end
     ask_for_a_movie
+    play_again
   end
 
   def ask_for_a_movie
@@ -64,7 +65,6 @@ class BestPictureWinners::CLI
         puts "There are no Best Picture Winners by that title or year."
         ask_for_a_movie
       end
-      play_again
     end
   end
 
@@ -97,7 +97,7 @@ class BestPictureWinners::CLI
     if entry == "y"
       puts " "
       start
-    else
+    elsif entry == "n"
       puts " "
       puts "Thanks for using our Best Picture Winners database. Goodbye!"
       puts " "
