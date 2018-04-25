@@ -44,7 +44,7 @@ class BestPictureWinners::CLI
       puts "Thanks for using our Best Picture Winners database. Goodbye!"
       puts " "
     else
-      if entry.to_i == 0 && valid_movies.include?(entry.downcase)
+      if valid_movies.include?(entry.downcase)
         #lookup movie
         BestPictureWinners::Movie.all.each do |movie|
           if movie.title.downcase == entry.downcase
