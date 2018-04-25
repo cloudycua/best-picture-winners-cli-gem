@@ -43,28 +43,27 @@ class BestPictureWinners::CLI
       puts " "
       puts "Thanks for using our Best Picture Winners database. Goodbye!"
       puts " "
-    else
-      if valid_movies.include?(entry.downcase)
-        #lookup movie
-        BestPictureWinners::Movie.all.each do |movie|
-          if movie.title.downcase == entry.downcase
-            puts " "
-            BestPictureWinners::Movie.print_movie_details(movie)
-          end
+    elsif valid_movies.include?(entry.downcase)
+      #lookup movie
+      BestPictureWinners::Movie.all.each do |movie|
+        if movie.title.downcase == entry.downcase
+          puts " "
+          BestPictureWinners::Movie.print_movie_details(movie)
         end
-      elsif valid_years.include?(entry)
-        BestPictureWinners::Movie.all.each do |movie|
-          if movie.year == entry
-            puts " "
-            BestPictureWinners::Movie.print_movie_details(movie)
-          end
-        end
-      else
-        puts " "
-        puts "There are no Best Picture Winners by that title or year."
-        ask_for_a_movie
       end
       play_again
+    elsif valid_years.include?(entry)
+      BestPictureWinners::Movie.all.each do |movie|
+        if movie.year == entry
+          puts " "
+          BestPictureWinners::Movie.print_movie_details(movie)
+        end
+      end
+      play_again
+    else
+      puts " "
+      puts "There are no Best Picture Winners by that title or year."
+      ask_for_a_movie
     end
   end
 
