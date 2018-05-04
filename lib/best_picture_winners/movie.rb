@@ -14,4 +14,9 @@ class BestPictureWinners::Movie
     @@all
   end
 
+  # our finder class method might look something like this
+  # def self.find_by(title)
+  #   all.detect {|movie| movie.title.downcase == title.downcase}
+  # end
+
 end

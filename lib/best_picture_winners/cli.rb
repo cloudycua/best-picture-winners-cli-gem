@@ -45,6 +45,11 @@ class BestPictureWinners::CLI
       puts " "
     elsif valid_movies.include?(entry.downcase)
       #lookup movie
+      # might be nice to build a self.find or self.find_by class method
+      # these each calls are a bit cumbersome, and we can extract this lookup logic
+      # and use Ruby's finder iterators like #detect
+      # something like Movie.find or Movie.find_by
+      # see the Movie class for an example
       BestPictureWinners::Movie.all.each do |movie|
         if movie.title.downcase == entry.downcase
           puts " "
