@@ -14,12 +14,4 @@ class BestPictureWinners::Movie
     @@all
   end
 
-  def self.print(movies)
-    movies.each do |movie|
-      puts "#{movie.title} (#{movie.year})"
-      puts "RT: #{movie.tomatometer}%   AS: #{movie.audience_score}%"
-      puts " "
-    end
-  end
-
 end

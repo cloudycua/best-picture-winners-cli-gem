@@ -26,11 +26,11 @@ class BestPictureWinners::CLI
     when 1
       print_alphabetically
     when 2
-      BestPictureWinners::Movie.print_by_year
+      print_by_year
     when 3
-      BestPictureWinners::Movie.print_by_tomatometer
+      print_by_tomatometer
     else
-      BestPictureWinners::Movie.print_by_audience
+      print_by_audience
     end
     ask_for_a_movie
   end
@@ -48,7 +48,7 @@ class BestPictureWinners::CLI
       BestPictureWinners::Movie.all.each do |movie|
         if movie.title.downcase == entry.downcase
           puts " "
-          BestPictureWinners::Movie.print_movie_details(movie)
+          print_movie_details(movie)
         end
       end
       play_again
@@ -56,7 +56,7 @@ class BestPictureWinners::CLI
       BestPictureWinners::Movie.all.each do |movie|
         if movie.year == entry
           puts " "
-          BestPictureWinners::Movie.print_movie_details(movie)
+          print_movie_details(movie)
         end
       end
       play_again
