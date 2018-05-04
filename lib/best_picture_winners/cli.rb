@@ -87,16 +87,16 @@ class BestPictureWinners::CLI
     puts " "
     puts "Would you like to see another list?"
     entry = gets.chomp.downcase
-    if !["y","n"].include?(entry)
-      until ["y","n"].include?(entry) do
+    if !["y","n","yes","no"].include?(entry)
+      until ["y","n","yes","no"].include?(entry) do
         puts "Invalid entry. Please enter Y or N to see another list."
         entry = gets.chomp.downcase
       end
     end
-    if entry == "y"
+    if entry == "y" || entry == "yes"
       puts " "
       start
-    elsif entry == "n"
+    elsif entry == "n" || entry == "no"
       puts " "
       puts "Thanks for using our Best Picture Winners database. Goodbye!"
       puts " "
