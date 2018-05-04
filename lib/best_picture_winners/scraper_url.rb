@@ -1,6 +1,9 @@
 class BestPictureWinners::ScraperURL
 
   def self.get_url_pages
+    # you could consider shortening this code to a two-line method since they all scrape from the same base url, something like:
+    # BASE_URL = "https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/"
+    # (1..9).collect {|num| Nokogiri::HTML(open("#{BASE_URL}/#{num}/"))}
     all_url_pages = []
     all_url_pages << Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/9/"))
     all_url_pages << Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/8/"))
@@ -15,6 +18,9 @@ class BestPictureWinners::ScraperURL
   end
 
   def self.scrape_movie_urls
+    # why not just create the Movie objects as we gather the info here?
+    # No need to build a separate class to do that
+    # This will eliminate an entire class (make_movies) and some extra code 
     movies = []
     pages = get_url_pages.size
     index = 0
@@ -24,6 +30,7 @@ class BestPictureWinners::ScraperURL
         movie_year = movie.css(".start-year").text.slice!(1,4)
         movie_url = movie.css("h2 a").attr("href").value
         movies << {title: movie_title, year: movie_year, url: movie_url}
+        # here we can just call Movie.new(title: movie_title, year: movie_year, url: movie_url)
       end
       index += 1
     end

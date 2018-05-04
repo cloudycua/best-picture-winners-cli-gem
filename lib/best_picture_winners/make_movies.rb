@@ -1,3 +1,4 @@
+# I think we can do without this class, just put the instantiation call directly in the scraper class
 class BestPictureWinners::MakeMovies
 
   def make_movies
