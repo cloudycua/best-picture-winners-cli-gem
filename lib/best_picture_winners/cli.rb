@@ -24,7 +24,7 @@ class BestPictureWinners::CLI
     valid_entries = [1,2,3,4]
     case valid_number_entry(valid_entries)
     when 1
-      BestPictureWinners::Movie.print_alphabetically
+      print_alphabetically
     when 2
       BestPictureWinners::Movie.print_by_year
     when 3
@@ -114,6 +114,63 @@ class BestPictureWinners::CLI
       end
       entry
     end
+  end
+
+  def print(movies)
+    movies.each do |movie|
+      puts "#{movie.title} (#{movie.year})"
+      puts "RT: #{movie.tomatometer}%   AS: #{movie.audience_score}%"
+      puts " "
+    end
+  end
+
+  def print_alphabetically
+    sorted_array = []
+    sorted_array = BestPictureWinners::Movie.all.sort_by! { |movie| movie.title }
+    puts " "
+    puts "Best Picture Award Winners sorted alphabetically"
+    puts " "
+    print(sorted_array)
+  end
+
+  def print_by_year
+    sorted_array = []
+    sorted_array = BestPictureWinners::Movie.all.sort_by! { |movie| movie.year }.reverse!
+    puts " "
+    puts "Best Picture Award Winners sorted year"
+    puts " "
+    print(sorted_array)
+  end
+
+  def print_by_tomatometer
+    sorted_array = []
+    sorted_array = BestPictureWinners::Movie.all.sort_by! { |movie| movie.tomatometer }.reverse!
+    puts " "
+    puts "Best Picture Award Winners sorted by Rotten Tomatoes Critics Rating (RT)"
+    puts " "
+    print(sorted_array)
+  end
+
+  def print_by_audience
+    sorted_array = []
+    sorted_array = BestPictureWinners::Movie.all.sort_by! { |movie| movie.audience_score }.reverse!
+    puts " "
+    puts "Best Picture Award Winners sorted by Audience Score (AS)"
+    puts " "
+    print(sorted_array)
+  end
+
+  def print_movie_details(movie)
+    puts "#{movie.title.upcase} (#{movie.year})"
+    puts " "
+    puts "Genre: #{movie.genre}   Rating: #{movie.rating}   Runtime: #{movie.runtime}"
+    puts " "
+    puts "Synopsis: #{movie.synopsis}"
+    puts " "
+    puts "Critics Consensus: #{movie.critic_consensus}"
+    puts " "
+    puts "Tomatometer: #{movie.tomatometer}%   Audience Score: #{movie.audience_score}%"
+    puts " "
   end
 
 end
