@@ -1,6 +1,6 @@
 class BestPictureWinners::ScraperURL
 
-  def get_url_pages
+  def self.get_url_pages
     all_url_pages = []
     all_url_pages << Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/9/"))
     all_url_pages << Nokogiri::HTML(open("https://editorial.rottentomatoes.com/guide/oscars-best-and-worst-best-pictures/8/"))
@@ -14,12 +14,12 @@ class BestPictureWinners::ScraperURL
     all_url_pages
   end
 
-  def scrape_movie_urls
+  def self.scrape_movie_urls
     movies = []
     pages = get_url_pages.size
     index = 0
     while index < pages do
-      get_url_pages[index].css(".article_movie_title").each do |movie|
+      self.get_url_pages[index].css(".article_movie_title").each do |movie|
         movie_title = movie.css("h2 a").text
         movie_year = movie.css(".start-year").text.slice!(1,4)
         movie_url = movie.css("h2 a").attr("href").value
@@ -28,12 +28,6 @@ class BestPictureWinners::ScraperURL
       index += 1
     end
     movies
-  end
-
-  def make_movies
-    scrape_movie_urls.each do |movie|
-      BestPictureWinners::Movie.new(movie[:title], movie[:year], movie[:url])
-    end
   end
 
 end

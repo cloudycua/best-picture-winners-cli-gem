@@ -7,6 +7,7 @@ require_relative "best_picture_winners/cli"
 require_relative "best_picture_winners/scraper_url"
 require_relative "best_picture_winners/scraper_info"
 require_relative "best_picture_winners/movie"
+require_relative "best_picture_winners/make_movies"
 
 
 module BestPictureWinners

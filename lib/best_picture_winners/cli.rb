@@ -6,7 +6,7 @@ class BestPictureWinners::CLI
     puts "Please wait while we upload the database. This might take a few minutes."
     puts " "
     # Scrape Best Picture individual movie URL's and create a movie object for each with title, year and url
-    BestPictureWinners::ScraperURL.new.make_movies
+    BestPictureWinners::MakeMovies.new.make_movies
     # Scrape movie data from individual movie pages using URL from the ScraperURL
     BestPictureWinners::ScraperInfo.new.add_movie_info_from_url
     start
